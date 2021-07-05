@@ -1,0 +1,37 @@
+version: "3"
+services:
+  api-database:
+    image: mongo:latest
+    container_name: "api-database"
+    ports:
+      - 27017:27017
+    volumes:
+      - ./database:/data
+    networks:
+      - back-tier
+
+  front-end:
+      build:
+        context: ./stock-market-react
+        dockerfile: dockerfile
+      ports:
+        - 5000:3000
+      networks:
+        - front-tier
+        - back-tier
+  api:
+    build:
+      context: ./stock-market-api
+      dockerfile: dockerfile
+    ports:
+      - 9091:8080
+    volumes:
+      - ./containerLogs:/logs
+    networks:
+      - front-tier
+      - back-tier
+
+networks:
+  front-tier:
+  back-tier:
+     
