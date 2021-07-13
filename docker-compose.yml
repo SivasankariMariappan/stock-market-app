@@ -2,7 +2,7 @@ version: "3"
 services:
   api-database:
     image: mongo:latest
-    container_name: "api-database"
+    container_name: api-database
     ports:
       - 27017:27017
     volumes:
@@ -11,14 +11,14 @@ services:
       - back-tier
 
   front-end:
-      build:
-        context: ./stock-market-react
-        dockerfile: dockerfile
-      ports:
-        - 5000:3000
-      networks:
-        - front-tier
-        - back-tier
+    build:
+      context: ./stock-market-react
+      dockerfile: dockerfile
+    ports:
+      - 5000:3000
+    networks:
+      - front-tier
+      - back-tier
   api:
     build:
       context: ./stock-market-api
@@ -30,8 +30,62 @@ services:
     networks:
       - front-tier
       - back-tier
+    depends_on:
+      - logstash
+
+  elasticsearch:
+    build:
+      context: ./elk/elasticsearch
+      dockerfile: Dockerfile
+    container_name: elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - discovery.type=single-node
+      - XPACK_SECURITY_ENABLED=false
+      - XPACK_REPORTING_ENABLED=false
+      - XPACK_MONITORING_ENABLED=false
+      - "ES_JAVA_OPTS=-Xms750m -Xmx750m"
+    depends_on:
+      - logstash
+    networks:
+      - elk
+
+  logstash:
+    build:
+      context: ./elk/logstash
+      dockerfile: Dockerfile
+    container_name: logstash
+    command: -f /etc/logstash/conf.d/
+    volumes:
+      - ./elk/logstash/config:/etc/logstash/conf.d
+    ports:
+      - "9999:9999"
+    environment:
+      - XPACK_SECURITY_ENABLED=false
+      - XPACK_REPORTING_ENABLED=false
+      - XPACK_MONITORING_ENABLED=false
+    networks:
+      - elk
+
+  kibana:
+    build:
+      context: ./elk/kibana
+      dockerfile: Dockerfile
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    volumes:
+      - ./elk/kibana/config/:/opt/kibana/config/
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+    networks:
+      - elk
 
 networks:
   front-tier:
   back-tier:
-     
+  elk:

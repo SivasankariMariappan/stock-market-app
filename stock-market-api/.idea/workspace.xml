@@ -1,11 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="06a52d71-2607-468b-a7a1-44fb14bd4a51" name="Default Changelist" comment="" />
+    <list default="true" id="06a52d71-2607-468b-a7a1-44fb14bd4a51" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../containerLogs/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/../containerLogs/spring.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../containerLogs/spring.log.2021-06-26.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../containerLogs/spring.log.2021-06-27.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../containerLogs/spring.log.2021-06-28.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../containerLogs/spring.log.2021-06-29.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/spring.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spring.log.2021-06-23.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spring.log.2021-06-26.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spring.log.2021-06-27.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spring.log.2021-06-28.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/fse/controller/CompanyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/org/fse/controller/CompanyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/fse/demo/MongoDbApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/org/fse/demo/MongoDbApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/fse/exception/CompanyNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/org/fse/exception/CompanyNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/fse/repository/StockSearchImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/org/fse/repository/StockSearchImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/MongoDB-0.0.1-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/MongoDB-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/org/fse/controller/CompanyController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/org/fse/demo/MongoDbApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/org/fse/dto/StockSearchResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/org/fse/entity/Company.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/org/fse/entity/StockDetails.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/org/fse/exception/CompanyNotFoundException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/org/fse/repository/CompanyRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/org/fse/repository/StockSearch.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/org/fse/repository/StockSearchImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/org/fse/service/CompanyService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.org.fse.demo.MongoDbApplicationTests.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.org.fse.demo.MongoDbApplicationTests.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/org/fse/demo/MongoDbApplicationTests.class" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1uXkHdSql9jROxGGzITUaDTimum" />
   <component name="ProjectViewState">
@@ -73,9 +115,9 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="459" y="223" key="NewModule_or_Project.wizard/0.0.1680.1050@0.0.1680.1050" timestamp="1625061197462" />
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1625063011842">
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1625657522116">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1625063011842" />
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1625657522116" />
   </component>
 </project>

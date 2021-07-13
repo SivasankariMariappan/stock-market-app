@@ -2,8 +2,8 @@ package com.org.fse.repository;
 
 import com.org.fse.dto.StockSearchResponse;
 import com.org.fse.entity.Company;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.*;
@@ -20,7 +20,7 @@ import java.util.List;
 
 public class StockSearchImpl implements  StockSearch {
 
-    Logger logger =  LoggerFactory.getLogger(StockSearchImpl.class);
+    private final Logger logger = LogManager.getLogger(this.getClass());
 
 
     private final MongoTemplate mongoTemplate;
@@ -32,7 +32,7 @@ public class StockSearchImpl implements  StockSearch {
 
     @Override
     public List<StockSearchResponse> aggregate(String companyCode, Date fromDate, Date toDate) {
-        logger.info("Search impl >>" + companyCode + "StartDate" + fromDate + "endDate" +fromDate );
+        logger.info("filter company details in stockSearchImpl " + companyCode + "StartDate" + fromDate + "endDate" +fromDate );
         MatchOperation companyMatchOperation = matchCompanyCode(companyCode);
         UnwindOperation unwindOperation =unWindStockDetailsList();
         MatchOperation stockMatchOperation = matchStockDate(fromDate, toDate);
@@ -47,7 +47,6 @@ public class StockSearchImpl implements  StockSearch {
                 projectionOperation
         ), Company.class, StockSearchResponse.class).getMappedResults();
 
-        logger.info("response from interface >>" + response);
         return response;
     }
 
@@ -97,8 +96,7 @@ public class StockSearchImpl implements  StockSearch {
 
     @Override
     public List<Company> findAllByLatestStockDate() {
-
-
+        logger.info("Get details of a company with latest stock price");
         UnwindOperation unwindOperation =unWindStockDetailsList();
         SortOperation sortOperation = sortByStockDate();
         GroupOperation groupOperation =groupOperationForFindAll();
@@ -110,7 +108,6 @@ public class StockSearchImpl implements  StockSearch {
                 projectionOperation
         ), Company.class, Company.class).getMappedResults();
 
-        logger.info("response from interface >>" + response);
         return response;
     }
 

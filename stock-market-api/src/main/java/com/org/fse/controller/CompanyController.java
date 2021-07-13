@@ -6,8 +6,8 @@ import com.org.fse.entity.Company;
 import com.org.fse.entity.StockDetails;
 import com.org.fse.exception.CompanyNotFoundException;
 import com.org.fse.service.CompanyService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +23,7 @@ import java.util.Optional;
 @RestController
 public class CompanyController {
 
-    Logger logger =  LoggerFactory.getLogger(CompanyController.class);
+    private final Logger logger = LogManager.getLogger(this.getClass());
 
     @Autowired
     private CompanyService companyService;
@@ -31,6 +31,7 @@ public class CompanyController {
 
     @GetMapping(path="/company/info/{companyCode}")
     public Company getCompanyByCode(@PathVariable String companyCode){
+        logger.info("Get company details for"+ companyCode);
         Optional<Company> optionalCompany=  companyService.getCompanyByCode(companyCode);
         if(optionalCompany.isPresent())
             return optionalCompany.get();
@@ -49,6 +50,7 @@ public class CompanyController {
 
     @DeleteMapping(path="/company/delete/{companyCode}")
     public String deleteCompany(@PathVariable String companyCode){
+        logger.info("Delete details of a company with code"+ companyCode);
         return companyService.deleteCompany(companyCode);
     }
 
@@ -59,6 +61,7 @@ public class CompanyController {
         if(!optionalCompany.isPresent())
             throw new CompanyNotFoundException("Company "+ companyCode +" - Not Found");
 
+       logger.info("Stock details to be added for a company with code "+ companyCode);
        StockDetails stock= new StockDetails(s.getStockPrice(), new Date());
        Company companyToBeUpdated= optionalCompany.get();
        List<StockDetails> stockDetails= companyToBeUpdated.getStockDetailsList();
@@ -75,7 +78,7 @@ public class CompanyController {
 
     @GetMapping(path="/stock/get/{companyCode}/{startDate}/{endDate}")
     public List<StockSearchResponse> filterStockDetails(@PathVariable String companyCode, @PathVariable  @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'") Date startDate, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'") Date endDate){
-        logger.info("request handler >>" + companyCode + "StartDate" + startDate + "endDate" +endDate );
+        logger.info("Filter details of a company with code " + companyCode + "StartDate" + startDate + "endDate" +endDate );
        return companyService.filterStockDetails(companyCode,startDate,endDate);
     }
 
