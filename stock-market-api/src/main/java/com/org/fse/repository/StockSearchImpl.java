@@ -2,8 +2,8 @@ package com.org.fse.repository;
 
 import com.org.fse.dto.StockSearchResponse;
 import com.org.fse.entity.Company;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.*;
@@ -20,7 +20,7 @@ import java.util.List;
 
 public class StockSearchImpl implements  StockSearch {
 
-    private final Logger logger = LogManager.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 
     private final MongoTemplate mongoTemplate;

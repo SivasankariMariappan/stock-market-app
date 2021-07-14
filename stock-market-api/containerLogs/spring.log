@@ -1,0 +1,3 @@
+logdate=(2021-07-14T18:36:19,958) thread=(main)) level=(INFO) loggerclass=(com.org.fse.demo.MongoDbApplicationTests) message=(Starting MongoDbApplicationTests on CMM-C02YW1WRLVCG with PID 60651 (started by telstra in /Users/telstra/Documents/My Learning/stock-market-app/stock-market-api))
+logdate=(2021-07-14T18:36:19,967) thread=(main)) level=(INFO) loggerclass=(com.org.fse.demo.MongoDbApplicationTests) message=(No active profile set, falling back to default profiles: default)
+logdate=(2021-07-14T18:36:22,204) thread=(main)) level=(INFO) loggerclass=(com.org.fse.demo.MongoDbApplicationTests) message=(Started MongoDbApplicationTests in 2.45 seconds (JVM running for 3.753))

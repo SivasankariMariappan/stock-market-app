@@ -6,8 +6,8 @@ import com.org.fse.entity.Company;
 import com.org.fse.entity.StockDetails;
 import com.org.fse.exception.CompanyNotFoundException;
 import com.org.fse.service.CompanyService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +23,7 @@ import java.util.Optional;
 @RestController
 public class CompanyController {
 
-    private final Logger logger = LogManager.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private CompanyService companyService;

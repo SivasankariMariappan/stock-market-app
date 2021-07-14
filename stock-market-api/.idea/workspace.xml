@@ -16,7 +16,6 @@
       <change beforePath="$PROJECT_DIR$/logs/spring.log.2021-06-28.0.gz" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/org/fse/controller/CompanyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/org/fse/controller/CompanyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/fse/demo/MongoDbApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/org/fse/demo/MongoDbApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/org/fse/exception/CompanyNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/org/fse/exception/CompanyNotFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/org/fse/repository/StockSearchImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/org/fse/repository/StockSearchImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
