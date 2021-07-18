@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.23.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: kafkaserver
+  name: kafkaserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: kafkaserver
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/elk: "true"
+        io.kompose.service: kafkaserver
+    spec:
+      containers:
+        - env:
+            - name: ADVERTISED_HOST
+              value: kafkaserver
+            - name: ADVERTISED_PORT
+              value: "9092"
+          image: spotify/kafka:latest
+          name: kafka
+          ports:
+            - containerPort: 2181
+            - containerPort: 9092
+          resources: {}
+      hostname: kafkaserver
+      restartPolicy: Always
+status: {}

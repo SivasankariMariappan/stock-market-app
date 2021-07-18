@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.23.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: front-end
+  name: front-end
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: front-end
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.23.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/back-tier: "true"
+        io.kompose.network/front-tier: "true"
+        io.kompose.service: front-end
+    spec:
+      containers:
+        - image: stockmarketappregistry.azurecr.io/front-end:v3
+          name: front-end
+          ports:
+            - containerPort: 3000
+          resources: {}
+      imagePullSecrets:
+        - name: stockmarketappregistrykey     
+      restartPolicy: Always
+status: {}
