@@ -19,12 +19,15 @@ services:
     networks:
       - front-tier
       - back-tier
+
   api:
     build:
       context: ./stock-market-api
       dockerfile: dockerfile
+    container_name: springboot
     ports:
       - 9091:8080
+      - 9094:8090
     volumes:
       - ./containerLogs:/logs
     networks:
@@ -33,6 +36,24 @@ services:
       - elk
     depends_on:
       - logstash
+
+  prometheus:
+    image: "prom/prometheus"
+    ports:
+      - 9090:9090
+    volumes:
+      - ./stock-market-api/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    links:
+      - api:springboot
+    depends_on:
+      - api
+    networks:
+      - back-tier
+
+  grafana:
+    image: "grafana/grafana"
+    ports:
+      - 3000:3000
 
   # Kafka Server & Zookeeper Docker Image
   kafkaserver:
@@ -125,6 +146,13 @@ services:
       - elasticsearch
     networks:
       - elk
+
+  sonarqube:
+    image: sonarqube:latest
+    environment:
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+    ports:
+      - 9093:9000
 
 networks:
   front-tier:

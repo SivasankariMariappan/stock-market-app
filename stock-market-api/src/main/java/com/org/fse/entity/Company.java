@@ -1,6 +1,6 @@
 package com.org.fse.entity;
 
-
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,12 +12,19 @@ import java.util.List;
 public class Company {
 
     @Id
+    @ApiModelProperty(notes = "The Company Code")
     private String companyCode;
+    @ApiModelProperty(notes = "The Company Name")
     private String companyName;
+    @ApiModelProperty(notes = "The Company CEO")
     private String companyCeo;
+    @ApiModelProperty(notes = "Turn over of a company")
     private BigDecimal turnOver;
+    @ApiModelProperty(notes = "Official webiste of a company")    
     private String companyLink;
+    @ApiModelProperty(notes = "Stock Exchange")
     private String stockExchange;
+    @ApiModelProperty(notes = "Stock Price List of a company")
     private List<StockDetails> stockDetailsList;
 
     public Company(String companyCode, String companyName, String companyCeo, BigDecimal turnOver, String companyLink, String stockExchange) {
