@@ -26,9 +26,9 @@ spec:
         io.kompose.service: logstash
     spec:
       containers:
-        - args:
-            - -f
-            - /etc/logstash/conf.d/
+        - name: logstash
+          image: logstash:7.0.1
+          
           env:
             - name: XPACK_MONITORING_ENABLED
               value: "false"
@@ -36,17 +36,26 @@ spec:
               value: "false"
             - name: XPACK_SECURITY_ENABLED
               value: "false"
-          image: logstash:7.0.1
-          name: logstash
           ports:
             - containerPort: 9999
           resources: {}
           volumeMounts:
-            - mountPath: /etc/logstash/conf.d
-              name: logstash-claim0
+            - mountPath: /usr/share/logstash/config:rw
+              name: logstash-settings-config-volume
+            - mountPath: /usr/share/logstash/pipeline:rw
+              name: logstash-pipeline-config-volume  
       restartPolicy: Always
       volumes:
-        - name: logstash-claim0
-          persistentVolumeClaim:
-            claimName: logstash-claim0
+        - name: logstash-settings-config-volume
+          configMap:
+            name: logstash-config
+            items:
+              - key: "logstash.yml"
+                path: logstash.yml
+        - name: logstash-pipeline-config-volume
+          configMap:
+            name: logstash-config
+            items:
+              - key: "pipeline.conf"
+                path: pipeline.conf       
 status: {}

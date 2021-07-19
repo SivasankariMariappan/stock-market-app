@@ -35,11 +35,14 @@ spec:
             - containerPort: 5601
           resources: {}
           volumeMounts:
-            - mountPath: /opt/kibana/config/
-              name: kibana-claim0
+            - mountPath: /usr/share/kibana/config/
+              name: kibana-settings-config-volume
       restartPolicy: Always
       volumes:
-        - name: kibana-claim0
-          persistentVolumeClaim:
-            claimName: kibana-claim0
+        - name: kibana-settings-config-volume
+          configMap:
+            name: kibana-config
+            items:
+              - key: "kibana.yml"
+                path: kibana.yml
 status: {}

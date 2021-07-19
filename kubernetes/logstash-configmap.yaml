@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: logstash-config
+  labels:
+    io.kompose.service: logstash
+
+
+data:
+  logstash.yml: |-
+    http.host: "0.0.0.0"
+    path.config: /usr/share/logstash/pipeline
+  pipeline.conf: |-
+    input {
+      kafka {
+        bootstrap_servers => "kafkaserver:9092"
+        topics => ["stock-market-app"]
+        auto_offset_reset => "earliest"
+      }
+    }
+    
+    filter {
+      kv {
+        source => "message"
+        recursive => "true"
+      }
+    }
+    
+    output {
+      elasticsearch {
+      hosts => "elasticsearch:9200"
+      index => "stock-market-app-logs-%{+YYYY.MM.dd}"
+      }
+    }
